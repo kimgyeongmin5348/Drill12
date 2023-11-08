@@ -31,6 +31,7 @@ def add_collision_pair(group, a, b):  # add_collision_pair('boy:ball', None, bal
         collections_pairs[group][1].append(b)
 
 
+
 def remove_collision_object(o):
     for pairs in collections_pairs.values():
         if o in pairs[0]:
@@ -72,6 +73,7 @@ def handle_collisions():
     for group, pairs in collections_pairs.items():
         for a in pairs[0]:
             for b in pairs[1]:
-                if collid(a, b):
-                    a.handle_collision(group, b)
-                    b.handle_collision(group, a)
+                    if collid(a, b):
+                        a.handle_collision(group, b)
+                        b.handle_collision(group, a)
+
