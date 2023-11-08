@@ -9,6 +9,7 @@ from boy import Boy
 from ball import Ball
 from zombie import Zombie
 
+
 # boy = None
 
 def handle_events():
@@ -21,9 +22,11 @@ def handle_events():
         else:
             boy.handle_event(event)
 
+
 def init():
     global grass
     global boy
+    global balls
 
     running = True
 
@@ -33,8 +36,8 @@ def init():
     boy = Boy()
     game_world.add_object(boy, 1)
 
-
-
+    balls = [Ball(random.randint(100, 1600 - 100), 60, 0) for _ in range(30)]
+    game_world.add_objects(balls, 1)
 
 
 def finish():
@@ -46,14 +49,16 @@ def update():
     game_world.update()
     # fill here
 
+
 def draw():
     clear_canvas()
     game_world.render()
     update_canvas()
 
+
 def pause():
     pass
 
+
 def resume():
     pass
-
