@@ -26,7 +26,7 @@ def handle_events():
 def init():
     global grass
     global boy
-    global balls
+    # global balls
 
     running = True
 
@@ -35,9 +35,13 @@ def init():
 
     boy = Boy()
     game_world.add_object(boy, 1)
+    game_world.add_collision_pair('boy:ball', boy, None)
 
     balls = [Ball(random.randint(100, 1600 - 100), 60, 0) for _ in range(30)]
     game_world.add_objects(balls, 1)
+    for ball in balls:
+        game_world.add_collision_pair('boy:ball', None, ball)
+
 
 
 def finish():
@@ -47,7 +51,10 @@ def finish():
 
 def update():
     game_world.update()
-    # fill here
+    game_world.handle_collisions()
+    # for ball in balls:
+    #     if game_world.collid(boy, ball):
+    #         print('Collision boy:ball')
 
 
 def draw():
